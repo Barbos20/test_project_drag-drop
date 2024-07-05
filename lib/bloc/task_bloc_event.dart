@@ -21,3 +21,15 @@ class UpdateTask extends TaskBlocEvent {
   @override
   List<Object> get props => [taskId, newParentId, newOrder];
 }
+
+// Событие изменения порядка задач
+class ReorderTasks extends TaskBlocEvent {
+  final int oldIndex;
+  final int newIndex;
+  final int parentId;
+
+  const ReorderTasks(this.oldIndex, this.newIndex, this.parentId);
+
+  @override
+  List<Object> get props => [oldIndex, newIndex, parentId];
+}

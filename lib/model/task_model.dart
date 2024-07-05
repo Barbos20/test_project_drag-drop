@@ -8,9 +8,9 @@ class Task extends Equatable {
   final int id;
   final int? parentId;
   final String name;
-  final int order;
+  int order;
 
-  const Task({
+  Task({
     required this.id,
     required this.parentId,
     required this.name,
@@ -30,6 +30,20 @@ class Task extends Equatable {
 
   @override
   List<Object> get props => [id, parentId ?? 0, name, order];
+
+  Task copyWith({
+    int? id,
+    int? parentId,
+    String? name,
+    int? order,
+  }) {
+    return Task(
+      id: id ?? this.id,
+      parentId: parentId ?? this.parentId,
+      name: name ?? this.name,
+      order: order ?? this.order,
+    );
+  }
 }
 
 @JsonSerializable()
